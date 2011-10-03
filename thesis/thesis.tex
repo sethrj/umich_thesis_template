@@ -1,0 +1,174 @@
+%\documentclass[twoside]{umthesis}
+\documentclass{umthesis}
+%\documentclass[draft]{umthesis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[inner=1.5in,outer=1in,top=1in,bottom=1in,headheight=0pt]{geometry}
+
+\usepackage{amsmath}
+% font choice
+\usepackage[T1]{fontenc}
+%\usepackage{txfonts}
+\usepackage{fourier}
+\SetMathAlphabet{\mathcal}{normal}{OMS}{cmsy}{m}{n}%revert calligraphy math
+
+% \singlespacing
+\doublespacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% extra packages and shortcuts
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage[pdftex]{graphicx}
+\usepackage[width=.75\textwidth,font=small,labelfont=bf]{caption}
+\usepackage{booktabs} % \toprule, \midrule, \bottomrule
+\usepackage{verbatim}
+% note: rotating must go AFTER graphicx
+\usepackage{subfig} % figure 1a, 1b
+\usepackage{rotating} % sideways tables
+% note: this file is in $(git rev-parse --show-toplevel)/texmf/etc
+\input{SRJinclude.tex}
+%\setSRJthesisfigurepaths
+
+% For use in the introduction
+\newcommand{\chaptersynopsis}[1]{%
+\subsubsection{Chapter~\ref{#1}: \nameref{#1}}}
+% For referencing equations from a previous chapter; defined like this for
+% compatibility with ``single-chapter'' compile
+\newcommand{\tagref}[1]{\tag{\ref{#1}}}
+
+% float setup
+\renewcommand\floatpagefraction{.70}
+\renewcommand\topfraction{.95}
+\renewcommand\bottomfraction{.95}
+\renewcommand\textfraction{.1}
+
+% Improve list and enum spacing
+\renewcommand{\itemhook}{\par\setstretch{1}%
+  \setlength{\topsep}{0pt}%
+  \setlength{\parskip}{0pt}%
+  \setlength{\partopsep}{.5\baselineskip}%
+  \setlength{\parsep}{0pt}%
+  \setlength{\itemsep}{0pt}%
+}
+\renewcommand{\enumhook}{\itemhook}
+
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                     {-2.5ex  \@minus -.2ex}%
+                                     {1.5ex \@minus .2ex}%
+                                     {\normalfont\Large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-1.75ex  \@minus -.2ex}%
+                                     {1.25ex \@minus .2ex}%
+                                     {\normalfont\large\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-1.5ex  \@minus -.2ex}%
+                                     {1.25ex \@minus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\makeatother  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Seth R.~Johnson}
+\title{Anisotropic Diffusion Approximations for Time-dependent Particle
+Transport\texorpdfstring{\\%
+  \emph{DRAFT: \today}}{}
+}
+
+\program{Nuclear Engineering and Radiological Sciences}
+\degree{Doctor of Philosophy}
+\chaircommitteemember{Edward W.~Larsen}{Professor}
+\committeemember{Thomas J.~Downar}{Professor}
+\committeemember{James P.~Holloway}{Professor}
+\committeemember{William R.~Martin}{Professor}
+\committeemember{Katsuyo S.~Thornton}{Professor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\includeonly{%
+introduction,%
+adDerivation,%
+conclusion,%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% let ``align'' break anywhere
+\allowdisplaybreaks
+% keep huge spaces out from between paragraphs, especially when using double
+% spacing
+\setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FRONT MATTER
+\frontmatter
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frontispiece}
+\begin{flushleft}
+For in much wisdom is much vexation,\hfill\\
+\hspace{1.5em}and he who increases knowledge increases sorrow.
+\end{flushleft}
+---Eccl.~1:18
+%THIS PAGE INTENTIONALLY NOT LEFT BLANK
+\end{frontispiece}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{dedication}
+  To my parents, Ayn Rand and God.
+\end{dedication}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{acknowledgments}
+  Acknowledge people here.
+\end{acknowledgments}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{preface}
+%  before reading this, you should know\dots
+%\end{preface}
+
+% list of contents, etc
+\tableofcontents
+\listoftables
+\listoffigures
+%\listofappendices
+
+% % the optional normal abstract is formatted the same as preface and acknowledgements,
+% % and is listed in the table of contents
+% \begin{abstract}
+% \end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN MATTER
+\mainmatter
+
+% note that chapter markers MUST go inside the ``include''-d file
+\include{introduction}
+\include{trtBackground}
+\include{adDerivation}
+\include{aponeDerivation}
+\include{implementation}
+\include{flatland}
+\include{simpleNumericalResults}
+\include{trtNumericalResults}
+\include{conclusion}
+
+%\appendix
+%\include{pytrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY
+\backmatter
+\bibliographystyle{ans}
+\bibliography{../SRJall}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OPTIONAL INDEX
+%\phantomsection %makes sure it points to the right page
+%\addtocontents{toc}{chapter}{Index}
+%\printindex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

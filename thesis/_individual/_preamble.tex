@@ -1,0 +1,54 @@
+\let\origmaketitle\maketitle
+\renewcommand\maketitle\relax
+\renewcommand\contentsname\relax
+
+\author{Seth R.~Johnson}
+\title{Anisotropic Diffusion Approximations for Time-dependent Particle
+Transport}
+\date{\today}
+
+\usepackage{color}
+\usepackage{setspace}
+\definecolor{intertextbg}{gray}{0.85}
+
+% Modify the chapter output
+\makeatletter
+\newcommand{\newchapter}{%
+\noindent%
+\hspace{\stretch{1}}%
+\colorbox{intertextbg}{\parbox{0.75\columnwidth}{\centering Chapter from Seth's
+dissertation}}%
+\hspace{\stretch{1}}
+}
+\makeatother
+
+% Turn the chapter command into title/figures
+\newcommand{\chapter}[1]{%
+\title{#1}%
+\origmaketitle
+\newchapter
+{\par\noindent\centering\rule[.25ex]{\columnwidth}{2pt}\par}%
+\vspace{-3\baselineskip}
+\tableofcontents%
+{\par\noindent\centering\rule[.25ex]{\columnwidth}{2pt}\par}%
+\clearpage%
+
+\onehalfspacing
+}
+
+% set up graphics paths
+\setSRJthesisfigurepaths
+
+% Individual documents don't have access to chapter labels
+\newcommand{\chaptersynopsis}[1]{\subsection{#1}}
+% Create a label instead of referencing from a previous chapter
+\newcommand{\tagref}[1]{\label{#1}}
+
+% Kill appendices
+%\renewcommand{\appendix}{}
+
+%\newcommand{\index}[1]{}
+
+\usepackage{booktabs} % \toprule, \midrule, \bottomrule
+\usepackage{rotating}
+

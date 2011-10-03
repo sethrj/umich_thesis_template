@@ -1,0 +1,34 @@
+% !TEX root = _individual/adDerivation.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Anisotropic diffusion}\label{chap:adDerivation}
+
+Chapter text goes here.
+
+An example of a figure using proper, typographically appealing rules with the
+\verb|booktabs| package is Table~\ref{tab:angularDomain}.
+
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{rccc} \toprule
+   Geometry & $\vec{\Omega}$ & Domain $S$ & $\ud\Omega$
+\\ \midrule
+   1-D & $\mu$ & $-1 \le \mu \le 1$ & $\ud\mu$
+   \\
+   2-D & $\sqrt{1-\mu^2} \cos \omega \vec{i}
+   + \sqrt{1-\mu^2} \sin \omega \vec{j}$
+   & $-1 \le \mu \le 1$, $0 \le \omega < 2\pi$ & $\ud\mu \ud \omega$
+   \\
+   Flatland & $\cos \omega \vec{i} + \sin \omega \vec{j}$
+   & $0 \le \omega < 2\pi$ & $\ud \omega$
+   \\
+   3-D & $\mu \vec{i}
+   + \sqrt{1-\mu^2} \cos \omega \vec{j}
+   + \sqrt{1-\mu^2} \sin \omega \vec{k}$
+   & $-1 \le \mu \le 1$, $0 \le \omega < 2\pi$ & $\ud\mu \ud \omega$
+\\ \bottomrule
+  \end{tabular}
+  \caption{Angular variables in the various geometries.}
+  \label{tab:angularDomain}
+\end{table}
+
